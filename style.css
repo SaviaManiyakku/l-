@@ -1,0 +1,48 @@
+.header_div {
+    background-color: rgb(124, 103, 173);
+color:rgb(97, 96, 155);
+}
+
+.header_div img{
+    width:50px;
+}
+
+.main_div{
+    background:rgb(185, 171, 197);
+    padding:10px;
+    margin: 15px;
+    border:15px white;
+    align-content: center;
+}
+
+.main_div label{
+    background:rgb(107, 95, 117);
+    padding:10px;
+    width:310px;
+    margin-bottom:15px;
+    box-shadow:10px 10px 10px rgb(230, 230, 233);
+}
+
+#camera, #result{
+    border: 5px dotted rgb(154, 144, 163);
+    width:310px;
+    height:300px;
+    box-shadow:10px 10px 10px rgb(110, 91, 119);
+}
+
+.main_div button{
+    border: 5px dotted rgb(84, 79, 90);
+    width:310px;
+    box-shadow:10px 10px 10px rgb(129, 120, 138);
+}
+
+.copyright_footer{
+position:fixed;
+color:rgb(204, 175, 238);
+text-align: center;
+bottom:0px;
+width:100%;
+background-color: rgb(129, 119, 153);
+height: 30px;
+}
+

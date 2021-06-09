@@ -1,0 +1,45 @@
+
+<html>
+    <head>
+      <title>MobileNet</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+      <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
+  
+      <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+  
+    <body>
+      <center>
+  <div class= "col-xs-12 header_div">
+    <h2>Image Recongnition WebApp
+    </h2>
+  </div>
+  
+  <div class="col-sm-6 col-xs-12 main_div">
+    <label>Test Image</label>
+    <div id="camera"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO-eIjCsQRt8fioLdso3JseFmCI0hjx9-HOw&usqp=CAU"></div>
+      <button onclick="check();" class="btn btn-success">Identify Image</button>
+      <h5>Output on<b>MobileNet</b>-</h5>
+      <h5>Output on<b>Microsoft Azure</b>-</h5>  
+    </div>
+
+    <div class="col-sm-6 col-xs-12 main_div">
+      <label>Test Image</label>
+      <div id="camera"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0PEBAPDw4ODg4NDQ0PDQ0NDw8NDhAOFREWFhURFRMYHSohGBsnGxMTITEiJSorMC4uFyEzODUsOyg5Ly0BCgoKDg0OGg8QGS0gHx4rNy03MS4vKy0rKzYuNystLTEtLSsrKys3KystLSstLS0tNS04NSs3Li0rLS0rKysrN//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAwQCBgcBBQj/xABDEAACAQICBAoGCAMJAQAAAAAAAQIDBAUREiExUQYTM0FhcXJzgbEHIjSRssEUMkJTgpKh0URi0iQlQ1KTw9Ph8CP/xAAZAQEAAwEBAAAAAAAAAAAAAAAAAQIDBQT/xAAkEQEBAAEDAwQDAQAAAAAAAAAAAQIDETESITIEE1FhIkJxFP/aAAwDAQACEQMRAD8A7iAAAAAAAAAAAAAAAADRMZ4fynWdnhFs8QuVqnVXstLpcl9brzS6XsKy4McJLr1rrGVaZ6+JsoPKPRpRcX+r6wOiA52+B2P0fWtsfqVZLZC7hKUX0Zyc/I9tOHF9Y1YW+OWvExm9GniFunKhJ/zJZ/pr/lA6GDChWhUjGcJRnCcVKE4NSjKL2NNbUZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA53w2xa5v7pYJYT0G1pYjcrZTpZLOnn1SWe9tR52blwkxSNnaXF08nxFGcop7JT2Qj4ycV4mt+irBpUbR3dbOV1iU3cVZy+toNtwXjm5fi6ANi4O4Da4fRjQt4KMVk5zeupUnzzm+d+XMfUAAFbEbChc0p0a9ONWlUWU4TWafT0PpWwsgDmuB1auBX8cOrTlUw2+k3h9abz4qrnrpSfW0n1p6s2dKNb9IGA/T7CtSis69JcfatbVWgm0k+lZx/EZcAMbd/h9CvJ51VF0q2/jIam31rJ+IGxAAAAAAAAAAAAAAAAAAAAAAAAAAAAANJ9KUJV6NnYxz/vDEbelPL7qOcpPwyT8Dc6VOMIxjFJRhFRjFbFFLJI5R6WuEHFXdKmp8TUtLHEKtGrpZN3Fa2lTpaO6SeeRyutiFfa61VvnbqTbfW2wP1cD8kSv633tT88v3Ip31X7yp+eX7gfrwH5Cp3tXPlJ/nl+59izrt7XJ+LA/UppfAW3+i3mL2aWVOF3SuqK5tC4p6WS6E45eBxideSyylNdUpL5m8eibHpzvKdOc3Xq1rCVKtOU9KdN0Lq5dNT52+LlT282QHYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEPTlhNedxC4hTqShGMKc5KEnFLRctLSSySWTT60c0rn6j4W0IVLG6hNNxlQnmk9HYs1r60jh1xwJU5Nxr6C5o8XpZeOkNzZokmRTZvy9Hmf8U/8ARX9RWj6P9KUl9MyUG0/7Pm3l+Mjqhs0qk9Z9qxkbPhPoyVfWr5xWeXs2vYn950n36fopcVqxB+Nsv6x1Q2aNVew230RYXXp4lTrOnN0qtvc//RQloRenJJSlszeg/wBDDE+A1S30ZSu41Y6WUofR3Tb1f5tN5e46twBoRp2FBRWWbqt621nxklmvcTubNhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfP4QRztbhb6M/I5lpZPUbDwtx6rVlK3otQoxlo1J5ZyqST1pbo5rxy3bdZSlvz8DTHCbd3g1te9W2FW4XEugxpQ1yef122/EgWlvM4uW8n28fhl7+p8vqYTLiFlHXs+t1Jc3UfXWJzf2Y/r+5rcJT3k8Z1d46MVvfz+V3E48espZxWafq7c11m2cFqShaUoptqPGbdvKSfzNIfHP7R9PAMWrW0tCo9OhKWvV61Nv7S6N6/wDOLhNuzTT171flezegeJnpm9wAAAAAAAAAAAAAAAAAAAAAAAARXU3GnOS2xhNrrSZKQ3vJ1O7n8LCLw5XVMUZVDFHocdmkSwSIoksCErFOKLMEitTLMAtEqSMZJHqPJEJbrhMm6FJv7uK92otlPCOQpdhFwyrp4eMAAQsAAAAAAAAAAAAAAAAAAAAABDd8nU7ufwsmIrvk593PyYReHKqhiZVDA9DjpIn0LS2TjpPc9WzJrXr35xz9x86J9i0fHR0X9aCyaz0dOHNr3rpIrTTktZ1rWKza1ZOby5stLKKXuZFAtaPERz15vVCLlpetzzfNs1FWBEWzm1So8kEGFW64RyFLu4lsqYTyFLu4lsyrp4eMAAQsAAAAAAAAAAAAAAAAAAAAABFd8nPu5+TJSK65OfYn5MIvDlNQwRnUMEehx2cT6tGfEQUtTqVUmk9kYcz8T5SJYsirY5bd32KVZ11oSy4yPrQa1KW+JBArUnlsLEBstct+UyDCPGQN2wnkKXdxLZUwjkKXdxLZlXTw8YAAhYAAAAAAAAAAAAAAAAAAAAACK65OfYn5MlIrrk59ifkwi8OUVDFGVQwR6HHSIlgRRJYAT0yxArwLECFomieM9R5ILN2wjkKXdxLhTwfkKXYRcMby6eHjAAELAAAAAAAAAAAAAAAAAAAAAARXX1J9iXkSkV19SfYn5MIvDk9RmKZ7UMUehx0sSWBDElgBYpliBXgTwIWiZHjCPGFm74N7PS7CLpSwb2el2EXTG8unh4wABCwAAAAAAAAAAAAAAAAAAAAAEV1yc+xPyZKRXfJz7ufkwi8OS1DGImxE9DjJIk0CGJLAJWIFiBWpliBC0SoM8DCW8YL7PS7CLpRwT2el2PmXjG8uph4wABCwAAAAAAAAAAAAAAAAAAAAAEV3yc+7n5MlIbvk6ndz+FhF4cjmInkhE9DjJYk0CGJLAJWIE8CvAngQtEqDPEGEt5wT2el2EXijgfs9LsfNl4xvLqYeMAAQsAAAAAAAAAAAAAAAAAAAAABDecnU7ufwsmIbzk6ndz+FhF4cgkz2Jg2ZRPS4y3bUdLPWllv1czfyLUbGplzc2rPf/wBnz4FiM3tzebee3n3lVpYu07WWW2Oaz9XPXqeTZM7acU28sl058+RShJ737yaMnvC0sSHjYzPGwN7wL2el2Pmy+UMB9mpdj5svmN5dTDxn8AAQsAAAAAAAAAAAAAAAAAAAAABjUSaaazTTTW9GQA47jdu7WrKnPNR0nxc5LJSjza95XhWjvOy17enUTjOEZxe2M4qSfgz4txwMwupm/osIN89GU6HwNGs1Pl4s/Sd/xrnUKiJoVFvNyn6P7D7MrqHZraXxJkT9HtrzXV6vxW7/ANsnrjP/AC6n01mFRbyWNaO82OPAC2X8Vev8Vv8A8ZPT4DWa21LmfaqRXwxRHXEz02p9NXdxE9t6nGzVOHrSb2LXkt7y2I3OjwSw6P8Agafe1KlRe5vI+tbWlKktGnThTjuhFRX6EXNpj6W/tXljSUKcILPKEUte3rJwDN7J2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/2Q=="></div>
+        <button onclick="check();" class="btn btn-success">Identify Image</button>
+        <h5>Output on<b>MobileNet</b>-</h5>
+        <h5>Output on<b>Microsoft Azure</b>-</h5>  
+      </div>
+  </center>
+      <div class="copyright_footer">
+        <h3>Devolped By:Savia</h3>
+  </div>
+      
+  <script src="main.js"></script>
+    </body>
+  </html>
